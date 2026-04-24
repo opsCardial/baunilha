@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Unicórnio de Baunilha</title>
+<title>Unicornio de Baunilha</title>
 
 <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
 
@@ -12,8 +12,6 @@ body {
   font-family: 'Minecraft', sans-serif;
   color: white;
   text-align: center;
-
-  /* textura de grama */
   background-image: url('https://i.imgur.com/3e5pQ7M.png');
   background-size: 150px;
 }
@@ -38,21 +36,21 @@ h1 {
 }
 
 .ip {
-  font-size: 20px;
-  margin: 10px 0;
+  font-size: 18px;
+  margin: 8px 0;
   background: #222;
-  padding: 10px;
+  padding: 8px;
   border-radius: 6px;
 }
 
 button {
-  margin-top: 10px;
+  margin-top: 8px;
   padding: 10px 20px;
   font-family: 'Minecraft', sans-serif;
   background: #4CAF50;
   border: none;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   border-radius: 6px;
 }
@@ -93,13 +91,28 @@ button:hover {
 <body>
 <div class="container">
 
-<h1>🦄 Unicórnio de Baunilha</h1>
+<h1>🦄 Unicornio de Baunilha</h1>
 
 <div class="card">
-  <h2>🌐 Conexão</h2>
+  <h2>🌐 Conexao</h2>
 
-  <div class="ip" id="ip">147.185.221.31:51652</div>
-  <button onclick="copyIP()">Copiar IP</button>
+  <div>
+    <div><strong>IP</strong></div>
+    <div class="ip" id="ip">147.185.221.31</div>
+    <button onclick="copyText('ip')">Copiar IP</button>
+  </div>
+
+  <div style="margin-top: 15px;">
+    <div><strong>Porta</strong></div>
+    <div class="ip" id="porta">51652</div>
+    <button onclick="copyText('porta')">Copiar Porta</button>
+  </div>
+
+  <a href="minecraft://?addExternalServer=Unicornio%20de%20Baunilha|147.185.221.31:51652">
+    <button style="background:#2196F3; margin-top:15px;">
+      🎮 Entrar direto
+    </button>
+  </a>
 </div>
 
 <div class="card">
@@ -118,49 +131,49 @@ button:hover {
       <div class="icon">
         <img src="https://mc-icons.netlify.app/emerald.png">
       </div>
-      Toque em Jogar
+      Jogar
     </div>
 
     <div class="step">
       <div class="icon">
         <img src="https://mc-icons.netlify.app/ender_eye.png">
       </div>
-      Aba Servidores
+      Servidores
     </div>
 
     <div class="step">
       <div class="icon">
         <img src="https://mc-icons.netlify.app/command_block.png">
       </div>
-      Adicionar Servidor
+      Adicionar
     </div>
 
     <div class="step">
       <div class="icon">
         <img src="https://mc-icons.netlify.app/name_tag.png">
       </div>
-      Nome: Unicórnio
+      Nome
     </div>
 
     <div class="step">
       <div class="icon">
         <img src="https://mc-icons.netlify.app/compass.png">
       </div>
-      IP: 147.185.221.31
+      IP
     </div>
 
     <div class="step">
       <div class="icon">
         <img src="https://mc-icons.netlify.app/redstone_torch.png">
       </div>
-      Porta: 51652
+      Porta
     </div>
 
     <div class="step">
       <div class="icon">
         <img src="https://mc-icons.netlify.app/diamond_sword.png">
       </div>
-      Entrar e jogar
+      Jogar
     </div>
 
   </div>
@@ -173,10 +186,10 @@ button:hover {
 </div>
 
 <script>
-function copyIP() {
-  const ip = document.getElementById("ip").innerText;
-  navigator.clipboard.writeText(ip);
-  alert("IP copiado!");
+function copyText(id) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text);
+  alert("Copiado!");
 }
 </script>
 
