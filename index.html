@@ -1,197 +1,246 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Unicornio de Baunilha</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unicornio de Baunilha - Servidor Minecraft</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mc-green: #55FF55;
+            --mc-shadow: #373737;
+            --card-bg: rgba(0, 0, 0, 0.75);
+            --mc-gold: #FFAA00;
+        }
 
-<link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'VT323', monospace;
+            color: white;
+            background-image: url('https://www.transparenttextures.com/patterns/minecraft-grass.png'), linear-gradient(to bottom, #5d823e, #5d823e);
+            background-repeat: repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-<style>
-body {
-  margin: 0;
-  font-family: 'Minecraft', sans-serif;
-  color: white;
-  text-align: center;
-  background-image: url('https://i.imgur.com/3e5pQ7M.png');
-  background-size: 150px;
-}
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px 0;
+            text-align: center;
+        }
 
-.container {
-  padding: 40px 20px;
-}
+        h1 {
+            font-size: 4rem;
+            text-shadow: 4px 4px 0px var(--mc-shadow);
+            margin-bottom: 30px;
+            color: var(--mc-green);
+            letter-spacing: 2px;
+        }
 
-h1 {
-  font-size: 48px;
-  text-shadow: 3px 3px #000;
-}
+        .main-card {
+            background-color: var(--card-bg);
+            border: 4px solid #000;
+            padding: 30px;
+            border-radius: 4px;
+            box-shadow: 0 10px 0 rgba(0,0,0,0.3);
+        }
 
-.card {
-  background: rgba(0,0,0,0.75);
-  border: 3px solid #555;
-  border-radius: 12px;
-  padding: 20px;
-  max-width: 800px;
-  margin: 20px auto;
-  box-shadow: 0 0 15px #000;
-}
+        /* Seção de Conexão */
+        .connection-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
 
-.ip {
-  font-size: 18px;
-  margin: 8px 0;
-  background: #222;
-  padding: 8px;
-  border-radius: 6px;
-}
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
 
-button {
-  margin-top: 8px;
-  padding: 10px 20px;
-  font-family: 'Minecraft', sans-serif;
-  background: #4CAF50;
-  border: none;
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 6px;
-}
+        .info-row:hover {
+            border-color: var(--mc-green);
+        }
 
-button:hover {
-  background: #45a049;
-  transform: scale(1.05);
-}
+        .label { color: var(--mc-gold); font-size: 1.5rem; }
+        .value { font-size: 1.8rem; flex-grow: 1; }
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 10px;
-  margin-top: 20px;
-}
+        button {
+            background-color: #A8A8A8;
+            border: 3px solid #000;
+            border-top-color: #D8D8D8;
+            border-left-color: #D8D8D8;
+            color: #373737;
+            padding: 10px 20px;
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
 
-.step {
-  background: #222;
-  padding: 10px;
-  border-radius: 8px;
-  border: 2px solid #444;
-}
+        button:hover {
+            background-color: var(--mc-green);
+            color: white;
+            transform: scale(1.05);
+        }
 
-.icon img {
-  width: 40px;
-  height: 40px;
-  image-rendering: pixelated;
-  margin-bottom: 5px;
-}
+        button:active {
+            transform: scale(0.95);
+        }
 
-.footer {
-  margin-top: 30px;
-  opacity: 0.8;
-}
-</style>
+        .btn-direct {
+            background-color: #5555FF;
+            color: white;
+            border-top-color: #7777FF;
+            border-left-color: #7777FF;
+            font-size: 1.8rem;
+            padding: 15px 30px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* Grid de Tutorial */
+        h2 { font-size: 2.5rem; margin-top: 40px; color: var(--mc-gold); }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .step-card {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border: 2px solid #373737;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .step-card:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--mc-green);
+        }
+
+        .step-card img {
+            width: 48px;
+            height: 48px;
+            image-rendering: pixelated;
+            margin-bottom: 10px;
+        }
+
+        .step-num { color: var(--mc-green); display: block; margin-bottom: 5px; }
+
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            background: rgba(0,0,0,0.8);
+            width: 100%;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .info-row { flex-direction: column; gap: 10px; }
+            .steps-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
 </head>
-
 <body>
-<div class="container">
 
-<h1>🦄 Unicornio de Baunilha</h1>
+    <div class="container">
+        <h1>Unicornio de Baunilha</h1>
 
-<div class="card">
-  <h2>🌐 Conexao</h2>
+        <div class="main-card">
+            <div class="connection-info">
+                <div class="info-row">
+                    <span class="label">IP:</span>
+                    <span class="value" id="server-ip">147.185.221.31</span>
+                    <button onclick="copyToClipboard('147.185.221.31', this)">Copiar IP</button>
+                </div>
 
-  <div>
-    <div><strong>IP</strong></div>
-    <div class="ip" id="ip">147.185.221.31</div>
-    <button onclick="copyText('ip')">Copiar IP</button>
-  </div>
+                <div class="info-row">
+                    <span class="label">PORTA:</span>
+                    <span class="value" id="server-port">51652</span>
+                    <button onclick="copyToClipboard('51652', this)">Copiar Porta</button>
+                </div>
 
-  <div style="margin-top: 15px;">
-    <div><strong>Porta</strong></div>
-    <div class="ip" id="porta">51652</div>
-    <button onclick="copyText('porta')">Copiar Porta</button>
-  </div>
+                <a href="minecraft://?addExternalServer=Unicornio%20de%20Baunilha|147.185.221.31:51652">
+                    <button class="btn-direct">ENTRAR DIRETO (BEDROCK)</button>
+                </a>
+            </div>
 
-  <a href="minecraft://?addExternalServer=Unicornio%20de%20Baunilha|147.185.221.31:51652">
-    <button style="background:#2196F3; margin-top:15px;">
-      🎮 Entrar direto
-    </button>
-  </a>
-</div>
+            <hr style="border: 1px solid #373737; margin: 40px 0;">
 
-<div class="card">
-  <h2>⚔️ Como Entrar (Bedrock)</h2>
-
-  <div class="steps">
-
-    <div class="step">
-      <div class="icon">
-        <img src="https://mc-icons.netlify.app/grass_block.png">
-      </div>
-      Abra o Minecraft
+            <h2>Como Entrar (Bedrock)</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <img src="https://minecraft.wiki/images/Crafting_Table_JE4_BE3.png" alt="Icon">
+                    <span><b class="step-num">1.</b> Abra o jogo</span>
+                </div>
+                <div class="step-card">
+                    <img src="https://minecraft.wiki/images/Diamond_Sword_JE3_BE3.png" alt="Icon">
+                    <span><b class="step-num">2.</b> Jogar</span>
+                </div>
+                <div class="step-card">
+                    <img src="https://minecraft.wiki/images/Compass_JE3_BE3.gif" alt="Icon">
+                    <span><b class="step-num">3.</b> Servidores</span>
+                </div>
+                <div class="step-card">
+                    <img src="https://minecraft.wiki/images/Oak_Sign_JE2_BE2.png" alt="Icon">
+                    <span><b class="step-num">4.</b> Adicionar</span>
+                </div>
+                <div class="step-card">
+                    <img src="https://minecraft.wiki/images/Name_Tag_JE2_BE2.png" alt="Icon">
+                    <span><b class="step-num">5.</b> Nome: Baunilha</span>
+                </div>
+                <div class="step-card">
+                    <img src="https://minecraft.wiki/images/Map_Filled_JE2_BE2.png" alt="Icon">
+                    <span><b class="step-num">6.</b> Digite o IP</span>
+                </div>
+                <div class="step-card">
+                    <img src="https://minecraft.wiki/images/Iron_Door_JE2_BE2.png" alt="Icon">
+                    <span><b class="step-num">7.</b> Digite a Porta</span>
+                </div>
+                <div class="step-card">
+                    <img src="https://minecraft.wiki/images/Ender_Pearl_JE3_BE2.png" alt="Icon">
+                    <span><b class="step-num">8.</b> Jogar</span>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="step">
-      <div class="icon">
-        <img src="https://mc-icons.netlify.app/emerald.png">
-      </div>
-      Jogar
-    </div>
+    <footer>
+        Desenvolvido por: <b>opsCardial</b> | 2026
+    </footer>
 
-    <div class="step">
-      <div class="icon">
-        <img src="https://mc-icons.netlify.app/ender_eye.png">
-      </div>
-      Servidores
-    </div>
-
-    <div class="step">
-      <div class="icon">
-        <img src="https://mc-icons.netlify.app/command_block.png">
-      </div>
-      Adicionar
-    </div>
-
-    <div class="step">
-      <div class="icon">
-        <img src="https://mc-icons.netlify.app/name_tag.png">
-      </div>
-      Nome
-    </div>
-
-    <div class="step">
-      <div class="icon">
-        <img src="https://mc-icons.netlify.app/compass.png">
-      </div>
-      IP
-    </div>
-
-    <div class="step">
-      <div class="icon">
-        <img src="https://mc-icons.netlify.app/redstone_torch.png">
-      </div>
-      Porta
-    </div>
-
-    <div class="step">
-      <div class="icon">
-        <img src="https://mc-icons.netlify.app/diamond_sword.png">
-      </div>
-      Jogar
-    </div>
-
-  </div>
-</div>
-
-<div class="footer">
-  Criado por <strong>opsCardial</strong>
-</div>
-
-</div>
-
-<script>
-function copyText(id) {
-  const text = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(text);
-  alert("Copiado!");
-}
-</script>
-
+    <script>
+        function copyToClipboard(text, btn) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btn.innerText;
+                btn.innerText = "Copiado!";
+                btn.style.backgroundColor = "#55FF55";
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.backgroundColor = "";
+                }, 2000);
+            });
+        }
+    </script>
 </body>
 </html>
