@@ -6,13 +6,14 @@
 <h2>Acessando o servidor</h2>
 <div align="center">
 <a href="minecraft://?addExternalServer=Unicornio%20de%20Baunilha|147.185.221.31:51652">
-  <img src="https://example.com/unicornio.png" alt="Entrar no servidor">
+  <img src="https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/22a2a07deaa10fe.png" alt="Entrar no servidor">
 </a>
 Clique aqui para acessar automaticamente o servidor
 </div>
 <br>
 <br>
 Ou configure manualmente
+<br>
 <br>
 <table>
   <tr>
