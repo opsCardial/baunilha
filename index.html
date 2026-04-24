@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Unicórnio de Baunilha</title>
+
+  <!-- Fonte estilo Minecraft -->
+  <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Minecraft', sans-serif;
+      background: linear-gradient(#87CEEB, #3CB371);
+      color: #fff;
+      text-align: center;
+    }
+
+    .container {
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      text-shadow: 3px 3px #000;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      opacity: 0.9;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: rgba(0,0,0,0.6);
+      border: 3px solid #555;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+      box-shadow: 0 0 15px #000;
+    }
+
+    .ip {
+      font-size: 20px;
+      margin: 10px 0;
+      background: #222;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-family: 'Minecraft', sans-serif;
+      background: #4CAF50;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #45a049;
+      transform: scale(1.05);
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🦄 Unicórnio de Baunilha</h1>
+    <div class="subtitle">Servidor Minecraft Vanilla</div>
+
+    <div class="card">
+      <div><strong>IP</strong></div>
+      <div class="ip" id="ip">147.185.221.31:51652</div>
+
+      <button onclick="copyIP()">Copiar IP</button>
+    </div>
+
+    <div class="footer">
+      Criado por <strong>opsCardial</strong>
+    </div>
+  </div>
+
+  <script>
+    function copyIP() {
+      const ip = document.getElementById("ip").innerText;
+      navigator.clipboard.writeText(ip);
+      alert("IP copiado!");
+    }
+  </script>
+</body>
+</html>
