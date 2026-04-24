@@ -21,7 +21,7 @@ Ou configure manualmente
     <td>Porta</td></td>
   </tr>
   <tr>
-    <td>147.185.221.31</td>
-    <td>51652</td>
+    <td>147.185.221.224</td>
+    <td>53154</td>
   </tr>
 </table>
