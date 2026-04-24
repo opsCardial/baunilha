@@ -5,11 +5,10 @@
 </div>
 <h2>Acessando o servidor</h2>
 <div align="center">
+  Clique no botão abaixo para acessar automaticamente o servidor
 <a href="https://opscardial.github.io/baunilha/">
   <img src="https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/22a2a07deaa10fe.png" alt="Entrar no servidor">
-</a>
-Clique aqui para acessar automaticamente o servidor
-</div>
+</a> </div>
 <br>
 <br>
 Ou configure manualmente
